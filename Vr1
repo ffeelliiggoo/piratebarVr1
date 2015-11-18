@@ -1,4 +1,3 @@
-
 import random
 
 # globals
@@ -29,8 +28,7 @@ def drink_pref():
         user_input = input(value + " ")
         preferences[key] = (user_input == "y" or user_input == "yes")
     return preferences
-
-
+    
 def mix_the_drink(value):
     """I now use the user preferences captured in the responses dict
     and make a delicious drink"""
@@ -40,7 +38,6 @@ def mix_the_drink(value):
             my_drink.append(random.choice(ingredients[key]))
     return my_drink
 
-
 # main
 
 def main():
@@ -48,7 +45,6 @@ def main():
     print("\nGreat! Based on your choices, I recommend a cocktail with a:")
     for drink in mix_the_drink(results):
         print("    " + drink)
-
-
+        
 if __name__ == "__main__":
     main()
