@@ -1,0 +1,51 @@
+import random
+
+questions = {
+    "strong": "How do you like your drinks strong.... or..... Extra Strong? ",
+    "salty": "Do you like a hint of salt on your drink? ",
+    "bitter": "Are you a lubber who likes it bitter? ",
+    "sweet": "Would you like a bit of sweetness with your poison? ",
+    "fruity": "Would you like your cocktail with a frutti finish? "
+}
+
+ingredients = {
+    "strong": ["shot of Rum", "slug of whisky", "splash of gin"],
+    "salty": ["olive on a stick", "salt-dusted rim", "rasher of bacon"],
+    "bitter": ["shake of bitters", "splash of tonic", "twist of lemon peel","splash of sada"],
+    "sweet": ["sugar cube", "spoonful of honey", "spash of cola","drop of honey"],
+    "fruity": ["splash of cranberry juice", "dash of cassis", "cherry on top","splash of orange juice"]
+}
+
+adjectives = ["Superfly","Heated","Dangerous","Deadly","Beautiful","Ferocious","Salty","Rusty","Bloody"]
+nouns = ["Coffin","Mast","Coffin","Beard","Dragon","Blunderbus","Dog","Bilge","Grog"]
+
+def askQuestions():
+  """Ask a user a series of questions about taste preferences"""
+  choices = {}
+  for key, value in questions.items():
+    answer = raw_input(value)
+    if (answer == "y") or (answer == "yes"):
+      choices[key] = True
+    else:
+      choices[key] = False
+  return choices
+    
+
+def mix(choices):
+  """Construct drink based on taste preferences"""
+  drink = []
+  for key, value in ingredients.items():
+    if choices[key]:
+      drink.append(random.choice(value))
+  return drink
+
+  
+if __name__ == '__main__':
+  userChoices = askQuestions()
+  drink = mix(userChoices)
+  drinkname = random.choice(adjectives) + " " + random.choice(nouns)
+  print""
+  print "Here is your drink, Enjoy The " + drinkname + "!!!!"
+  print""
+  for ingredient in drink:
+    print "A" + ingredient
